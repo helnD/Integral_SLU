@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using Domain.Elements;
 
 namespace Domain.Analyzers
 {
@@ -38,27 +39,37 @@ namespace Domain.Analyzers
 
         public ElementWithLength GetFunction(string expression, int index)
         {
-            index += _function.Length;
-            index++;
-
-            var parameters = new List<StringBuilder>();
-
+            int length = _function.Length + 1;
             int borderCount = 0;
-            int commaCount = 0;
+            var parameters = new List<string>();
+            var newParameter = new StringBuilder();
 
-            while (expression[index] != ')' && borderCount == 0)
+            index += length;
+
+            while (borderCount == 0 && expression[index] != ')')
             {
 
-                var newParameter = new StringBuilder();
+                length++;
                 
-                while (expression[index] != ',' && commaCount == 0)
+                if (expression[index] == '(') borderCount++;
+                if (expression[index] == ')') borderCount--;
+
+                if (expression[index] == ',' && borderCount == 0)
                 {
-                    if (expression[index] == ')' || borderCount == 0) break;
-                    
-                    
+                    parameters.Append(newParameter.ToString());
+                    newParameter = new StringBuilder();
+                    index++;
+                    continue;
                 }
+
+                newParameter.Append(expression[index]);
+                index++;
+
             }
 
+            length++;
+            
+            return new ElementWithLength(new Function(_function, parameters), length);
         }
     }
 }

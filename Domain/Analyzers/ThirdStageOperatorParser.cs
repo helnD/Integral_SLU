@@ -22,7 +22,7 @@ namespace Domain.Analyzers
         }
         
 
-        private ElementWithLength GetThirdStageOperator(int id)
+        public ElementWithLength GetThirdStageOperator(int id)
         {
             return new ElementWithLength(new FirstStageOperator(id, _foundOperator), _foundOperator.Length);
         }

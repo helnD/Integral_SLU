@@ -2,15 +2,15 @@
 
 namespace Domain.Elements
 {
-    public class Group
+    public class Group : Element, IContainer
     {
-        public Group(List<Element> elements, int priority)
+        public Group(string elements, int priority)
         {
             Elements = elements;
             Priority = priority;
         }
 
-        public List<Element> Elements { get; }
+        public string Elements { get; }
         public int Priority { get; }
     }
 }

@@ -21,7 +21,7 @@ namespace Domain.Analyzers
         }
         
 
-        private ElementWithLength GetFirstStageOperator(int id)
+        public ElementWithLength GetFirstStageOperator(int id)
         {
             return new ElementWithLength(new FirstStageOperator(id, _foundOperator), _foundOperator.Length);
         }

@@ -11,7 +11,19 @@ namespace Domain.Analyzers
     {
 
         private readonly string _expression;
-
+        
+        private readonly FirstStageOperatorParser _firstStageOperator 
+            = new FirstStageOperatorParser();
+        private readonly SecondStageOperatorParser _secondStageOperator 
+            = new SecondStageOperatorParser();
+        private readonly ThirdStageOperatorParser _thirdStageOperator 
+            = new ThirdStageOperatorParser();
+        
+        private readonly NumberParser _numberParser = new NumberParser();
+        
+        private readonly FunctionParser _functionParser = new FunctionParser();
+        private readonly GroupParser _groupParser = new GroupParser();
+        
         public ExpressionAnalyzer(string expression)
         {
             _expression = expression;
@@ -26,42 +38,36 @@ namespace Domain.Analyzers
 
             for (int index = 0; index < _expression.Length; index++)
             {
-                if (IsNumber(index))
+                if (_numberParser.Check(_expression, index))
                 {
-                    var number = GetNumber(index);
+                    var number = _numberParser.GetNumber(_expression, index);
                     result.Add(number.Element);
-                    index += number.Length - 1;
-                    continue;
+                    index += number.Length;
                 }
 
-                if (IsFirstStageOperator(index))
+                if (_firstStageOperator.Check(_expression, index))
                 {
-                    var oper = GetFirstStageOperator(index, id);
-                    result.Add(oper.Element);
-                    index += oper.Length - 1;
-                    id++;
-                    continue;
+                    var operat = _firstStageOperator.GetFirstStageOperator(id);
+                    result.Add(operat.Element);
+                    index += operat.Length;
                 }
-
-                if (IsSecondStageOperator(index))
+                
+                if (_secondStageOperator.Check(_expression, index))
                 {
-                    var oper = GetSecondStageOperator(index, id);
-                    result.Add(oper.Element);
-                    index += oper.Length - 1;
-                    id++;
-                    continue;
+                    var operat = _secondStageOperator.GetSecondStageOperator(id);
+                    result.Add(operat.Element);
+                    index += operat.Length;
                 }
-
-                if (IsThirdStageOperator(index))
+                
+                if (_thirdStageOperator.Check(_expression, index))
                 {
-                    var oper = GetThirdStageOperator(index, id);
-                    result.Add(oper.Element);
-                    index += oper.Length - 1;
-                    id++;
-                    continue;
+                    var operat = _thirdStageOperator.GetThirdStageOperator(id);
+                    result.Add(operat.Element);
+                    index += operat.Length;
                 }
-
-
+                
+                
+                
             }
         }
     }
