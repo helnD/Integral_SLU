@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\1\.Rider2019.2\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\1\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_Integral_SLU.-294690038.00" t="ExcludeRecursive" />
-    <e p="C:\Users\1\RiderProjects\Integral_SLU" t="IncludeFlat">
+    <e p="C:\Users\Владимир\.Rider2019.2\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Владимир\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_Integral_SLU.1623549566.00" t="ExcludeRecursive" />
+    <e p="C:\Users\Владимир\RiderProjects\Integral_SLU" t="IncludeFlat">
       <e p="Domain" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
         <e p="Domain.csproj" t="IncludeRecursive" />
@@ -16,7 +16,12 @@
             <e p="TrapezeMethod.cs" t="Include" />
           </e>
         </e>
-        <e p="LES" t="Include" />
+        <e p="LES" t="Include">
+          <e p="Element.cs" t="Include" />
+          <e p="LinearSystem.cs" t="Include" />
+          <e p="ResultVector.cs" t="Include" />
+          <e p="Row.cs" t="Include" />
+        </e>
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
             <e p="netcoreapp2.0" t="Include">

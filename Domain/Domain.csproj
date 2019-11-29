@@ -8,8 +8,4 @@
       <PackageReference Include="Sprache.Calc" Version="1.1.0" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="LES" />
-    </ItemGroup>
-
 </Project>
