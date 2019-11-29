@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿
 using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 using Domain.Integral;
 using Domain.Integral.Method;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using WebApplication.Models;
 
 namespace WebApplication.Controllers
 {
@@ -15,8 +10,17 @@ namespace WebApplication.Controllers
     {
         public IActionResult Index()
         {
-            var first = new Integral("x^2", 0, 10, 1000).Calculate(new RectangleMethod());
-            var second = new Integral("x^2", 0, 10, 1000).Calculate(new TrapezeMethod());
+            var watcher = new Stopwatch();
+            watcher.Start();
+            var first = new Integral("x^2", 0, 5, 5000).Calculate(new RectangleMethod());
+            watcher.Stop();
+            ViewData["time1"] = watcher.ElapsedMilliseconds;
+            
+            watcher.Restart();
+            var second = new Integral("x^2", 0, 5, 5000).Calculate(new TrapezeMethod());
+            watcher.Stop();
+            ViewData["time2"] = watcher.ElapsedMilliseconds;
+            
             ViewData["output"] = $"first: {first} \nsecond: {second}";
             return View();
         }

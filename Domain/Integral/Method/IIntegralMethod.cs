@@ -4,6 +4,6 @@ namespace Domain.Integral.Method
 {
     public interface IIntegralMethod
     {
-        double Calculate(Integral integral);
+        double Calculate(double start, double step, string expression);
     }
 }

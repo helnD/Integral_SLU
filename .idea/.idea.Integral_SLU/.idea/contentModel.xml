@@ -16,6 +16,7 @@
             <e p="TrapezeMethod.cs" t="Include" />
           </e>
         </e>
+        <e p="LES" t="Include" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
             <e p="netcoreapp2.0" t="Include">

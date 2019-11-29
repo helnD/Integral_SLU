@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using Sprache.Calc;
 
 namespace Domain.Integral.Method
@@ -8,31 +10,17 @@ namespace Domain.Integral.Method
     {
         private readonly XtensibleCalculator _calculator = new XtensibleCalculator();
 
-        public double Calculate(Integral integral)
+        public double Calculate(double start, double step, string expression)
         {
-            var sum = 0.0;
-            var step = (integral.TopLimit - integral.BottomLimit) / integral.Difference;
+            var function = _calculator.ParseExpression(expression,
+                x => start, pi => Math.PI, e => Math.E).Compile();
+            var foundation1 = function();
             
-            var watch = new Stopwatch();
-            watch.Start();
-
-            for (var xState = integral.BottomLimit; xState < integral.TopLimit; xState += step)
-            {
-                var state = xState;
-                var function = _calculator.ParseExpression(integral.Expression, x => state, pi => Math.PI, e => Math.E);
-                var height1 = function.Compile()();
-                
-//                function = _calculator.ParseExpression(integral.Expression, x => state + step, pi => Math.PI, e => Math.E);
-//                var height2 = function.Compile()();
-
-                sum += height1 * step;
-            }
+            function = _calculator.ParseExpression(expression,
+                x => start + step, pi => Math.PI, e => Math.E).Compile();
+            var foundation2 = function();
             
-            watch.Stop();
-            
-            Console.WriteLine($"Время: {watch.ElapsedMilliseconds}");
-
-            return sum;
+            return (foundation1 + foundation2) / 2 * step;
         }
     }
 }
