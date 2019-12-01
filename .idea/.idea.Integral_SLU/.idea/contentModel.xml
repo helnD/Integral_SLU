@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\1\.Rider2019.2\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\1\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_Integral_SLU.-294690038.00" t="ExcludeRecursive" />
-    <e p="C:\Users\1\RiderProjects\Integral_SLU" t="IncludeFlat">
+    <e p="C:\Users\Виктория\.Rider2019.2\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Виктория\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_Integral_SLU.2127229150.00" t="ExcludeRecursive" />
+    <e p="D:\Учеба\ТОИ\lab11" t="IncludeFlat">
       <e p="Domain" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
         <e p="Domain.csproj" t="IncludeRecursive" />
@@ -75,23 +75,27 @@
           <e p="_ViewStart.cshtml" t="Include" />
           <e p="Home" t="Include">
             <e p="Index.cshtml" t="Include" />
-            <e p="Privacy.cshtml" t="Include" />
           </e>
           <e p="Shared" t="Include">
             <e p="_Layout.cshtml" t="Include" />
-            <e p="_LoginPartial.cshtml" t="Include" />
-            <e p="_ValidationScriptsPartial.cshtml" t="Include" />
-            <e p="Error.cshtml" t="Include" />
           </e>
         </e>
         <e p="WebApplication.csproj" t="IncludeRecursive" />
         <e p="wwwroot" t="Include">
           <e p="css" t="Include">
-            <e p="site.css" t="Include" />
+            <e p="eq-styles.css" t="Include" />
+            <e p="int-style.css" t="Include" />
+            <e p="style.css" t="Include" />
           </e>
           <e p="favicon.ico" t="Include" />
+          <e p="img" t="Include">
+            <e p="blue-calc-btn.jpeg" t="Include" />
+            <e p="blue-lg-btn.jpeg" t="Include" />
+            <e p="blue-ln-btn.jpeg" t="Include" />
+            <e p="blue-log-btn.jpeg" t="Include" />
+          </e>
           <e p="js" t="Include">
-            <e p="site.js" t="Include" />
+            <e p="script.js" t="Include" />
           </e>
           <e p="lib" t="Include">
             <e p="bootstrap" t="Include">

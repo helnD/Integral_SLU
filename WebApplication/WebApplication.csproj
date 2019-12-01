@@ -22,4 +22,29 @@
       <ProjectReference Include="..\Domain\Domain.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Remove="Resources\img\add-eq-btn.png" />
+      <None Remove="Resources\img\blue-log-btn-img.png" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Resources\add-eq-btn.png" />
+      <None Remove="Resources\blue-calc-btn-img.png" />
+      <None Remove="Resources\blue-lg-btn-img.png" />
+      <None Remove="Resources\blue-ln-btn-img.png" />
+      <None Remove="Resources\blue-log-btn-img.png" />
+      <None Remove="Resources\close.png" />
+      <None Remove="Resources\substract.png" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="wwwroot\Resources\add-eq-btn.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\Resources\blue-calc-btn-img.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\Resources\blue-lg-btn-img.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\Resources\blue-ln-btn-img.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\Resources\blue-log-btn-img.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\Resources\close.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\Resources\substract.png" />
+    </ItemGroup>
+
 </Project>

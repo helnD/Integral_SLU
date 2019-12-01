@@ -1,8 +1,99 @@
 ﻿
 
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Интегралы и системы линейных уравнений";
 }
 
-<div class="text-center">
-</div>
+<body>
+    <div class="container">
+        <div class="integration-section">
+            <h1>Решение интегралов</h1>
+            <form id="integration-form">
+                <input id="sup" type="text" name="sup-limit" class="limit" oninput="setValue()" autocomplete="off" required>
+                <input id="sub" type="text" name="sub-limit" class="limit" oninput="setValue()" autocomplete="off" required>
+                <input id="func-field" type="text" name="func" class="func-field" autocomplete="off" required>
+                <input type="submit" class="btn calc-btn" value="=" onclick="sendIntegrationForm()">
+                <div id="result" class="result"></div>
+                <input type="button" class="btn clear-btn" onclick="clearForm()">
+                <div class="step-label">
+                    <label for="range">Количество частей:</label>
+                    <input type="text" id="range-value" name="range" autocomplete="off" required>
+                    <div class="range-buttons">
+                        <input type="button" value="x2" onclick="increaseValue(2)">
+                        <input type="button" value="x10" onclick="increaseValue(10)">
+                        <input type="button" value="x100" onclick="increaseValue(100)">
+                    </div>
+                </div>
+                <div class="methods">
+                    <label>Метод подсчета</label>
+                    <div class="bracket"></div>
+                    <input id="meth1" class="meth1 meth1-input" type="radio" name="method" value="method1" checked>
+                    <label for="meth1" class="meth1 meth1-label">Метод прямоугольников</label>
+                    <input id="meth2" class="meth2 meth2-input" type="radio" name="method" value="method2">
+                    <label for="meth2" class="meth2 meth2-label">Метод трапеций</label>
+                </div>
+                <span class="sign">&#8747;</span>
+                <div class="help-container">
+                    <div class="help-btns">
+                        <input type="button" onclick="addElement('x^2')" value="x²">
+                        <input type="button" onclick="addElement('x^3')" value="x³">
+                        <input type="button" onclick="addElement('^')" value="^">
+                        <input type="button" onclick="addElement('+')" value="+">
+                        <input type="button" onclick="addElement('-')" value="-">
+                        <input type="button" onclick="addElement('(')" value="(">
+                        <input type="button" onclick="addElement(')')" value=")">
+                        <input type="button" onclick="addElement('/')" value="/">
+                        <input type="button" onclick="addElement('*')" value="*">
+                        <input type="button" onclick="addElement('log( , e)')" value="ln">
+                        <input type="button" onclick="addElement('log( , 10)')" value="lg">
+                        <input type="button" onclick="addElement('log(, )')" value="log">
+                        <input type="button" onclick="addElement('e')" value="e">
+                        <input type="button" onclick="addElement('sin()')" value="sin">
+                        <input type="button" onclick="addElement('cos()')" value="cos">
+                        <input type="button" onclick="addElement('tg()')" value="tg">
+                        <input type="button" onclick="addElement('ctg()')" value="ctg">
+                        <input type="button" onclick="addElement('sqrt()')" value="&#8730;">
+                        <input type="button" onclick="addElement('pi')" value="&#960;">
+                    </div>
+                </div>
+            </form>
+            <ul>
+                <li>Введите функцию, например, x^2 - 12x^6;</li>
+                <li>нажмите на кнопку 
+                    <img align="top" height="20px" src="~/img/blue-calc-btn.jpeg" width="20px">
+                    , чтобы посчитать интеграл;</li>
+                <li>функции 
+                    <img src="~/img/blue-log-btn.jpeg" width="18px" height="18px" align="top">,
+                    <img src="~/img/blue-lg-btn.jpeg" width="18px" height="18px" align="top">, 
+                    <img src="~/img/blue-ln-btn.jpeg" width="18px" height="18px" align="top">
+                    требуют ввода двух параметров в формате: log(число, основание).</li>
+            </ul>
+        </div>
+        <div class="equations-section">
+            <h1>Решение СЛУ</h1>
+            <form id="equations-form" class="equations">
+                <div class="equation eq-1">
+                    <input id="a1" type="text">
+                    <span>x1+</span>
+                    <input id="a2" type="text">
+                    <span>x2</span><span class="equal-sign">=</span>
+                    <input id="b1" type="text">
+                </div>
+                <div class="equation eq-2">
+                    <input id="a3" type="text">
+                    <span>x1+</span>
+                    <input id="a4" type="text">
+                    <span>x2</span><span class="equal-sign">=</span>
+                    <input id="b2" type="text">
+                </div>
+                <div class="control-buttons">
+                    <input id="add-eq" name="add-btn" type="button" alt="Добавить уравнение" onclick="addEquation()">
+                    <input id="del-eq" name="del-btn" type="button" onclick="deleteEquation()">
+                </div>
+                <input type="button" id="calc-eq-btn" value="Посчитать" onclick="sendEquationsForm()">
+                <input type="button" id="clear-eq-btn" onclick="clearEqForm()">
+            </form>
+        </div>
+    </div>
+    <script src="../js/script.js" type="text/javascript"></script>
+</body>

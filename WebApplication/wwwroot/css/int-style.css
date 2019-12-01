@@ -1,0 +1,302 @@
+﻿#integration-form .range-buttons input, #integration-form .help-container .help-btns input {
+  width: 25px;
+  height: 25px;
+  margin: 2px;
+  padding: 0;
+  text-align: center;
+  background-color: transparent;
+  color: #aaa;
+  border: 1px solid #aaa; }
+  #integration-form .range-buttons input:hover, #integration-form .help-container .help-btns input:hover {
+    outline: none;
+    background-color: #ffffff10; }
+  #integration-form .range-buttons input:focus, #integration-form .help-container .help-btns input:focus {
+    outline: none; }
+
+.integration-section {
+  grid-area: integration;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 80%;
+  height: 90%;
+  margin-top: 40px;
+  padding: 20px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: #021f33;
+  -webkit-transform: rotateY(-20deg) scale(0.85);
+  transform: rotateY(-20deg) scale(0.85);
+  -webkit-transition-duration: 1s;
+  -o-transition-duration: 1s;
+  transition-duration: 1s; }
+  .integration-section:hover {
+    -webkit-transform: rotateY(0deg) scale(1) translateX(50px);
+    transform: rotateY(0deg) scale(1) translateX(50px);
+    background-color: transparent; }
+  .integration-section ul {
+    padding: 0;
+    margin: 0; }
+    .integration-section ul li {
+      color: #aaa;
+      font-size: 12px;
+      padding-top: 5px;
+      list-style-type: none;
+      line-height: 18px; }
+      .integration-section ul li::before {
+        content: "\2014  "; }
+
+h1 {
+  font-size: 18pt;
+  color: #aaa;
+  font-weight: normal;
+  text-align: center; }
+
+#integration-form {
+  width: 450px;
+  margin: 10px 0 20px 0;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto 1% 50% 1% auto 1% 15% 1% auto;
+  grid-template-columns: auto 50% auto 15% auto;
+  -ms-grid-rows: 1fr 1% 3fr 1% 1fr 1% 4fr 1% 3fr 1% 3fr;
+  grid-template-rows: 1fr 3fr 1fr 4fr 3fr 3fr;
+  grid-template-areas: "sup . . . ."
+ "sign func button result clear"
+ "sub help-buttons . . ."
+ ". help-buttons . . ."
+ "range range range range range"
+ "methods methods methods methods methods";
+  grid-gap: 1%;
+  justify-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center; }
+  #integration-form .result {
+    -ms-grid-row: 3;
+    -ms-grid-column: 7;
+    grid-area: result;
+    font-size: 18px;
+    color: #aaa; }
+  #integration-form .step-label {
+    -ms-grid-row: 9;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 9;
+    grid-area: range;
+    justify-self: left;
+    color: #aaa;
+    font-size: 12pt;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    justify-items: left;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center; }
+    #integration-form .step-label #range-value {
+      width: 44px;
+      height: 14px;
+      background-color: #ffffff10;
+      border: 1px solid #aaa;
+      color: #aaa;
+      padding: 3px 3px;
+      vertical-align: center;
+      font-size: 8pt;
+      text-align: center; }
+      #integration-form .step-label #range-value:active {
+        outline: none; }
+      #integration-form .step-label #range-value:focus {
+        outline: none;
+        border: 1px solid #fff; }
+    #integration-form .step-label > * {
+      margin: 0 8px; }
+    #integration-form .step-label label {
+      margin-left: 0; }
+  #integration-form .range-buttons input {
+    width: 35px;
+    height: 20px;
+    font-size: 8pt;
+    text-align: center; }
+  #integration-form .methods {
+    -ms-grid-row: 11;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 9;
+    grid-area: methods;
+    -ms-grid-column-align: left;
+    justify-self: left;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 4fr 4px 1fr 4px 6fr;
+    grid-template-columns: 4fr 1fr 6fr;
+    -ms-grid-rows: 1fr 4px 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: "label bracket input1"
+ "label bracket input2";
+    grid-gap: 4px;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    font-size: 16px;
+    color: #aaa; }
+    #integration-form .methods label:first-child {
+      -ms-grid-row: 1;
+      -ms-grid-row-span: 3;
+      -ms-grid-column: 1;
+      grid-area: label; }
+    #integration-form .methods .bracket {
+      -ms-grid-row: 1;
+      -ms-grid-row-span: 3;
+      -ms-grid-column: 3;
+      grid-area: bracket;
+      width: 10px;
+      height: 100%;
+      border: 1px solid #aaa;
+      border-right: none; }
+    #integration-form .methods .meth1 {
+      -ms-grid-row: 1;
+      -ms-grid-column: 5;
+      grid-area: input1; }
+    #integration-form .methods .meth2 {
+      -ms-grid-row: 3;
+      -ms-grid-column: 5;
+      grid-area: input2; }
+    #integration-form .methods .meth1-label, #integration-form .methods .meth2-label {
+      margin-left: 35px; }
+    #integration-form .methods .meth1-input, #integration-form .methods .meth2-input {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      width: 16px;
+      height: 16px;
+      background-color: #021f33;
+      border: none; }
+      #integration-form .methods .meth1-input:checked, #integration-form .methods .meth2-input:checked {
+        outline: none;
+        border: 1px solid #aaa; }
+      #integration-form .methods .meth1-input:focus, #integration-form .methods .meth2-input:focus {
+        outline: none; }
+  #integration-form .calc-btn {
+    -ms-grid-row: 3;
+    -ms-grid-column: 5;
+    grid-area: button;
+    background-color: transparent;
+    border: 1px solid #aaa;
+    -webkit-box-shadow: #02131f 5px 5px 0;
+    box-shadow: #02131f 5px 5px 0;
+    height: 30px;
+    width: 30px;
+    color: #aaa;
+    font-size: 24px;
+    font-weight: 100; }
+    #integration-form .calc-btn:hover {
+      outline: none;
+      background-color: #ffffff08; }
+    #integration-form .calc-btn:active {
+      outline: none;
+      background-color: #ffffff08;
+      border: #fff 1px solid; }
+    #integration-form .calc-btn:focus {
+      outline: none; }
+  #integration-form input[name^="sup"] {
+    -ms-grid-row: 1;
+    -ms-grid-column: 1;
+    grid-area: sup; }
+  #integration-form input[name^="sub"] {
+    -ms-grid-row: 5;
+    -ms-grid-column: 1;
+    grid-area: sub; }
+  #integration-form .func-field {
+    -ms-grid-row: 3;
+    -ms-grid-column: 3;
+    grid-area: func;
+    width: 100%;
+    height: 24px;
+    background-color: #ffffff10;
+    border: 1px solid #aaa;
+    color: #aaa;
+    padding: 3px 3px;
+    vertical-align: center; }
+    #integration-form .func-field:active {
+      outline: none; }
+    #integration-form .func-field:focus {
+      outline: none;
+      border: 1px solid #fff; }
+  #integration-form .sign {
+    -ms-grid-row: 3;
+    -ms-grid-column: 1;
+    grid-area: sign;
+    margin-top: 5px;
+    color: #aaa;
+    font-size: 40pt;
+    font-family: 'Ibarra Real Nova', serif; }
+  #integration-form .limit {
+    width: 34px;
+    height: 14px;
+    background-color: #ffffff10;
+    border: 1px solid #aaa;
+    color: #aaa;
+    padding: 3px 3px;
+    vertical-align: center;
+    font-size: 8pt;
+    text-align: center; }
+    #integration-form .limit:active {
+      outline: none; }
+    #integration-form .limit:focus {
+      outline: none;
+      border: 1px solid #fff; }
+  #integration-form .clear-btn {
+    -ms-grid-row: 3;
+    -ms-grid-column: 9;
+    grid-area: clear;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    background-color: transparent;
+    border: none;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2ZXJzaW9uPSIxLjEiIGlkPSJMYXllcl8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDM3MS4yMyAzNzEuMjMiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDM3MS4yMyAzNzEuMjM7IiB4bWw6c3BhY2U9InByZXNlcnZlIiB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgY2xhc3M9IiI+PGc+PHBvbHlnb24gcG9pbnRzPSIzNzEuMjMsMjEuMjEzIDM1MC4wMTgsMCAxODUuNjE1LDE2NC40MDIgMjEuMjEzLDAgMCwyMS4yMTMgMTY0LjQwMiwxODUuNjE1IDAsMzUwLjAxOCAyMS4yMTMsMzcxLjIzICAgMTg1LjYxNSwyMDYuODI4IDM1MC4wMTgsMzcxLjIzIDM3MS4yMywzNTAuMDE4IDIwNi44MjgsMTg1LjYxNSAiIGRhdGEtb3JpZ2luYWw9IiMwMDAwMDAiIGNsYXNzPSJhY3RpdmUtcGF0aCIgc3R5bGU9ImZpbGw6I0FBQUFBQSIgZGF0YS1vbGRfY29sb3I9IiMwMDAwMDAiPjwvcG9seWdvbj48L2c+IDwvc3ZnPg==);
+    background-size: 20px, 20px;
+    background-repeat: no-repeat;
+    background-position: center; }
+    #integration-form .clear-btn:hover {
+      outline: none;
+      background-color: #021f33; }
+    #integration-form .clear-btn:active {
+      outline: none;
+      border: 1px solid #aaa; }
+    #integration-form .clear-btn:focus {
+      outline: none; }
+  #integration-form .help-container {
+    -ms-grid-row: 5;
+    -ms-grid-row-span: 3;
+    -ms-grid-column: 3;
+    grid-area: help-buttons;
+    width: 96%;
+    height: 100%; }
+    #integration-form .help-container::before {
+      content: "";
+      display: block;
+      position: relative;
+      top: 0px;
+      left: 24px;
+      width: 0;
+      height: 0;
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+      border-bottom: 10px solid #021f33; }
+    #integration-form .help-container .help-btns {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      background-color: #021f33;
+      padding: 5px; }
