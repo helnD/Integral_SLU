@@ -30,7 +30,7 @@ namespace WebApplication
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<IAdapterService, IntegralAdapter>();
-            services.AddTransient<IIntegralBuilderService, SimpleBuilderService>();
+            services.AddTransient<IBuilderService, IntegralBuilderService>();
             services.AddControllersWithViews();
         }
 

@@ -15,13 +15,15 @@ namespace WebApplication.Controllers
             if (Request.Query["side"] == "left")
             {
                 var parameter = new IntegralAdapter().Adapt(Request.Query);
-                var integral = new SimpleBuilderService().Build(parameter);
+                var integral = new IntegralBuilderService().Build(parameter);
                 return Json(integral);
             }
 
             if (Request.Query["side"] == "right")
             {
-                //TODO()
+                var parameter = new LesAdapter().Adapt(Request.Query);
+                var les = new LesBuilderService().Build(parameter);
+                return Json(les);
             }
             return View();
         }

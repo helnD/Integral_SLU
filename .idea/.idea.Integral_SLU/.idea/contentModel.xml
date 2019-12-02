@@ -73,14 +73,20 @@
           <e p="AdapterService" t="Include">
             <e p="IAdapterService.cs" t="Include" />
             <e p="IntegralAdapter.cs" t="Include" />
+            <e p="LESAdapter.cs" t="Include" />
           </e>
           <e p="Data" t="Include">
             <e p="Adapted.cs" t="Include" />
             <e p="IntegralParameter.cs" t="Include" />
+            <e p="IntegralResult.cs" t="Include" />
+            <e p="LESParameter.cs" t="Include" />
+            <e p="LesResult.cs" t="Include" />
+            <e p="Result.cs" t="Include" />
           </e>
           <e p="IntegralService" t="Include">
-            <e p="IIntegralBuilderService.cs" t="Include" />
-            <e p="SimpleBuilderService.cs" t="Include" />
+            <e p="IBuilderService.cs" t="Include" />
+            <e p="IntegralBuilderService.cs" t="Include" />
+            <e p="LesBuilderService.cs" t="Include" />
           </e>
         </e>
         <e p="Startup.cs" t="Include" />

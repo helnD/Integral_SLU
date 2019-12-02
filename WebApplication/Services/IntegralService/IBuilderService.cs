@@ -2,8 +2,8 @@
 
 namespace WebApplication.Services.IntegralService
 {
-    public interface IIntegralBuilderService
+    public interface IBuilderService
     {
-        double Build(Adapted integralParameter);
+        Result Build(Adapted lesParameter);
     }
 }
