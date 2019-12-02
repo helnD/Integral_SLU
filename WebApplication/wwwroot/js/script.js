@@ -1,6 +1,7 @@
 ﻿function addElement(string) {
     var field = document.getElementById("func-field");
     field.value += string;
+    document.getElementById("func-field").focus();
 }
 
 function clearForm() {
@@ -15,7 +16,7 @@ function setValue() {
     let sup = document.getElementById("sup").value;
     let sub = document.getElementById("sub").value;
     let range = document.getElementById("range-value");
-    
+
     if (sup != "" && sub != "") {
         range.value = sup - sub;
     }
@@ -37,13 +38,13 @@ function addEquation() {
 
     equations = document.getElementById("equations-form").getElementsByClassName("equation");
     numberOfEq = equations.length;
-    
+
     for (let i = 0; i < numberOfEq; i++) {
         let span1 = document.createElement("span");
         span1.innerHTML = "&#160;x" + numberOfEq;
         let span2 = document.createElement("span");
         span2.innerHTML = "+&#160;";
-        
+
         let input = document.createElement("input");
         input.type = "text";
         input.id = "a" + (numberOfEq * numberOfEq + 1);
@@ -52,6 +53,17 @@ function addEquation() {
         let sign = eq.getElementsByClassName("equal-sign")[0];
         sign.before(span2, input, span1);
     }
+
+    let results = document.getElementsByClassName("eq-result")[0];
+    let divResult = document.createElement("div");
+    let label = document.createElement("label");
+    let number = document.createElement("label");
+
+    label.innerHTML = "x" + (results.children.length + 1);
+    number.className = "res-num";
+    divResult.className = "eq-res res" + (results.children.length + 1);
+    divResult.append(label, number);
+    results.append(divResult);
 }
 
 function createEquation(numberOfVars) {
@@ -83,13 +95,13 @@ function createEquation(numberOfVars) {
     input2.type = "text";
 
     div.append(input1, span1, span2, input2);
-    
+
     return div;
 }
 
 function clearEqForm() {
     let equations = document.getElementById("equations-form").getElementsByClassName("equation");
-    
+
     for (let i = 0; i < equations.length; i++) {
         let inputs = equations[i].getElementsByTagName("input");
         for (let j = 0; j < inputs.length; j++) {
@@ -105,7 +117,7 @@ function deleteEquation() {
 
     if (length - 1 >= 2) {
         form.removeChild(equations[length - 1]);
-        
+
         for (let j = 0; j < equations.length; j++) {
             let children = equations[j].children;
             for (let i = 0; i < children.length; i++) {
@@ -117,12 +129,16 @@ function deleteEquation() {
                 }
             }
         }
+
+        let results = document.getElementsByClassName("eq-result")[0];
+        results.removeChild(results.children[length - 1]);
     }
+
 }
 
 function sendIntegrationForm() {
     var request = new XMLHttpRequest;
-    var body = 
+    var body =
         "sup=" + encodeURIComponent(sup-limit)
         + "&sub=" + encodeURIComponent(sub-limit)
         + "&func=" + encodeURIComponent(func)
@@ -144,11 +160,11 @@ function sendEquationsForm() {
         let inputs = equations[j].getElementsByTagName("input");
 
         for (let i = 0; i < inputs.length - 1; i++) {
-            body += "a" + varIndex + "=" 
+            body += "a" + varIndex + "="
                 + (inputs[i].value != "" ? inputs[i].value : 0) + "&";
             varIndex++;
         }
-        body += "b" + (j + 1) + "=" 
+        body += "b" + (j + 1) + "="
             + (inputs[inputs.length - 1].value != "" ? inputs[inputs.length - 1].value : 0);
         body += (j == equations.length - 1 ? "" : "&");
     }
@@ -156,5 +172,17 @@ function sendEquationsForm() {
     console.log(body);
 
     request.open("GET", "", false);
+    request.onreadystatechange = function() {
+        if (request.readyState === 4 && request.status === 200) {
+            let objects = JSON.parse(request.response);
+            let labels = document.getElementsByClassName("res-num");
+
+            if (objects.length === labels.length) {
+                for (let i = 0; i < labels.length; i++) {
+                    labels[i].innerHTML = objects[i];
+                }
+            }
+        }
+    }
     request.send(body);
 }
