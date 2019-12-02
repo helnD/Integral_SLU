@@ -31,7 +31,7 @@ namespace Domain.Integral
 
         private void Calculate()
         {
-            Result = _method.Calculate(_start, _step, _expression);
+            Result =  _method.Calculate(_start, _step, _expression);
         }
 
         public void JoinThread()

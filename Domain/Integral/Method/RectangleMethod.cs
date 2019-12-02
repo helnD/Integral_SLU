@@ -15,7 +15,7 @@ namespace Domain.Integral.Method
         public double Calculate(double start, double step, string expression)
         {
             var function = _calculator.ParseExpression(expression,
-                x => start, pi => Math.PI, e => Math.E).Compile();
+                X => start, Pi => Math.PI, E => Math.E).Compile();
 
             return function() * step;
         }

@@ -13,12 +13,12 @@ namespace Domain.Integral.Method
         public double Calculate(double start, double step, string expression)
         {
             var function = _calculator.ParseExpression(expression,
-                x => start, pi => Math.PI, e => Math.E).Compile();
-            var foundation1 = function();
+                X => start, Pi => Math.PI, E => Math.E).Compile();
+            var foundation1 = Math.Abs(function());
             
             function = _calculator.ParseExpression(expression,
-                x => start + step, pi => Math.PI, e => Math.E).Compile();
-            var foundation2 = function();
+                X => start + step, Pi => Math.PI, E => Math.E).Compile();
+            var foundation2 = Math.Abs(function());
             
             return (foundation1 + foundation2) / 2 * step;
         }
