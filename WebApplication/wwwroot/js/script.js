@@ -15,7 +15,7 @@ function setValue() {
     let sup = document.getElementById("sup").value;
     let sub = document.getElementById("sub").value;
     let range = document.getElementById("range-value");
-    
+
     if (sup != "" && sub != "") {
         range.value = sup - sub;
     }
@@ -37,13 +37,13 @@ function addEquation() {
 
     equations = document.getElementById("equations-form").getElementsByClassName("equation");
     numberOfEq = equations.length;
-    
+
     for (let i = 0; i < numberOfEq; i++) {
         let span1 = document.createElement("span");
         span1.innerHTML = "&#160;x" + numberOfEq;
         let span2 = document.createElement("span");
         span2.innerHTML = "+&#160;";
-        
+
         let input = document.createElement("input");
         input.type = "text";
         input.id = "a" + (numberOfEq * numberOfEq + 1);
@@ -83,13 +83,13 @@ function createEquation(numberOfVars) {
     input2.type = "text";
 
     div.append(input1, span1, span2, input2);
-    
+
     return div;
 }
 
 function clearEqForm() {
     let equations = document.getElementById("equations-form").getElementsByClassName("equation");
-    
+
     for (let i = 0; i < equations.length; i++) {
         let inputs = equations[i].getElementsByTagName("input");
         for (let j = 0; j < inputs.length; j++) {
@@ -105,7 +105,7 @@ function deleteEquation() {
 
     if (length - 1 >= 2) {
         form.removeChild(equations[length - 1]);
-        
+
         for (let j = 0; j < equations.length; j++) {
             let children = equations[j].children;
             for (let i = 0; i < children.length; i++) {
@@ -121,21 +121,33 @@ function deleteEquation() {
 }
 
 function sendIntegrationForm() {
-    var request = new XMLHttpRequest;
-    var body = 
-        "sup=" + encodeURIComponent(sup-limit)
-        + "&sub=" + encodeURIComponent(sub-limit)
-        + "&func=" + encodeURIComponent(func)
-        + "&range=" + encodeURIComponent(range)
-        + "&meth=" + encodeURIComponent(method);
 
-    request.open("GET", "https://localhost:8080/Home/Integral?", false);
-    request.send(body);
+      var sup_limit = document.getElementById("sup");
+      var sub_limit = document.getElementById("sub");
+      var range = document.getElementById("range-value");
+      var func = document.getElementById("func-field");
+      var meth = document.getElementById("meth1").checked ? "method1" : "method2";
+
+      var request = new XMLHttpRequest();
+      var body =
+          "side=left"
+          + "&sup=" + encodeURIComponent(sup_limit.value)
+          + "&sub=" + encodeURIComponent(sub_limit.value)
+          + "&func=" + encodeURIComponent(func.value)
+          + "&range=" + encodeURIComponent(range.value)
+          + "&meth=" + encodeURIComponent(meth);
+
+      request.open("GET", "https://localhost:5001/Home/Index?" + body, false);
+      request.send();
+
+      var result_label = document.getElementById("result-value");
+      result_label.innerHTML = "";
+      result_label.appendChild(document.createTextNode(request.response));
 }
 
 function sendEquationsForm() {
     var request = new XMLHttpRequest;
-    var body = "";
+    var body = "side=right&";
 
     let equations = document.getElementsByClassName("equation");
     let varIndex = 1;
@@ -144,17 +156,17 @@ function sendEquationsForm() {
         let inputs = equations[j].getElementsByTagName("input");
 
         for (let i = 0; i < inputs.length - 1; i++) {
-            body += "a" + varIndex + "=" 
+            body += "a" + varIndex + "="
                 + (inputs[i].value != "" ? inputs[i].value : 0) + "&";
             varIndex++;
         }
-        body += "b" + (j + 1) + "=" 
+        body += "b" + (j + 1) + "="
             + (inputs[inputs.length - 1].value != "" ? inputs[inputs.length - 1].value : 0);
         body += (j == equations.length - 1 ? "" : "&");
     }
 
     console.log(body);
 
-    request.open("GET", "", false);
+    request.open("GET", "https://localhost:5001/Home/Index?", false);
     request.send(body);
 }

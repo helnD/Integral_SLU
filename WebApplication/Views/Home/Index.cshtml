@@ -12,8 +12,10 @@
                 <input id="sup" type="text" name="sup-limit" class="limit" oninput="setValue()" autocomplete="off" required>
                 <input id="sub" type="text" name="sub-limit" class="limit" oninput="setValue()" autocomplete="off" required>
                 <input id="func-field" type="text" name="func" class="func-field" autocomplete="off" required>
-                <input type="submit" class="btn calc-btn" value="=" onclick="sendIntegrationForm()">
-                <div id="result" class="result"></div>
+                <input type="button" class="btn calc-btn" value="=" onclick="sendIntegrationForm()">
+                <div id="result" class="result">
+                    <label id="result-value" class="step-label"></label>
+                </div>
                 <input type="button" class="btn clear-btn" onclick="clearForm()">
                 <div class="step-label">
                     <label for="range">Количество частей:</label>
@@ -50,8 +52,7 @@
                         <input type="button" onclick="addElement('e')" value="e">
                         <input type="button" onclick="addElement('sin()')" value="sin">
                         <input type="button" onclick="addElement('cos()')" value="cos">
-                        <input type="button" onclick="addElement('tg()')" value="tg">
-                        <input type="button" onclick="addElement('ctg()')" value="ctg">
+                        <input type="button" onclick="addElement('tan()')" value="tan">
                         <input type="button" onclick="addElement('sqrt()')" value="&#8730;">
                         <input type="button" onclick="addElement('pi')" value="&#960;">
                     </div>
