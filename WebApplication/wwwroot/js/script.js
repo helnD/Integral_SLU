@@ -156,7 +156,7 @@ function sendIntegrationForm() {
           if (request.readyState == 4 && request.status == 200) {
             var result_label = document.getElementById("result-value");
             result_label.innerHTML = "";
-            result_label.appendChild(document.createTextNode(request.response));
+            result_label.appendChild(document.createTextNode(JSON.parse(request.response).value));
           }
       }
 
